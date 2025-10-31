@@ -1,0 +1,33 @@
+<div *ngIf="!isSearching">
+  <p class="text-info">Introduce un nombre de usuario para ver sus repositorios.</p>
+</div>
+
+<div *ngIf="isSearching && repos && repos.length > 0">
+  <div class="grid-two-columns">
+    <app-filters [languages]="languages" (filterChange)="onFiltersChanged($event)"> </app-filters>
+
+    <section class="wrapper-list">
+      <div class="wrap-cards">
+        <div class="card" *ngFor="let repo of paginatedRepos">
+          <p class="title">{{ repo.name }}</p>
+          <p>{{ repo.description }}</p>
+          <div class="flex">
+            <a [href]="repo.html_url" target="_blank">{{ repo.name }}</a>
+            <p>⭐ {{ repo.stargazers_count }}</p>
+            <p>{{ repo.language }}</p>
+          </div>
+        </div>
+      </div>
+      <app-paginator
+        [itemsPerPage]="itemsPerPage"
+        [totalItems]="totalItems"
+        (pageChange)="onPageChange($event)"
+      >
+      </app-paginator>
+    </section>
+  </div>
+</div>
+
+<div *ngIf="isSearching && filteredRepos && filteredRepos.length === 0">
+  <p class="text-info">{{ textError }}</p>
+</div>

@@ -1,0 +1,18 @@
+.footer {
+  width: 936px;
+  margin: 0 auto;
+  background-color: #e5e5e5;
+  height: 33px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  border-radius: 16px;
+  position: fixed;
+  bottom: 9px;
+  justify-content: flex-end;
+  left: 5%;
+
+  @media (max-width: 600px) {
+  display: none;
+  }
+}

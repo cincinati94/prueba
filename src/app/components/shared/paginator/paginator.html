@@ -1,0 +1,5 @@
+ <div class="paginator" *ngIf="numPages > 1">
+      <button class="btn-round"  (click)="previousPage()" [disabled]="currentPage === 1">◀</button>
+      <span>{{ currentPage }}/{{ numPages }}</span>
+      <button class="btn-round" (click)="nextPage()" [disabled]="currentPage === numPages">▶</button>
+    </div>

@@ -1,0 +1,43 @@
+<div class="filter-container">
+  <button  class="btn-filter" *ngIf="filterForm.dirty || selectedLangs.length > 0" (click)="cleanFilters()">
+    <img
+      width="15"
+      height="15"
+      src="https://img.icons8.com/ios/50/clear-filters.png"
+      alt="clear-filters"
+    />
+  </button>
+  <form class="filter-form" [formGroup]="filterForm" (ngSubmit)="onChangeEmit()">
+    <div>
+      <input class="input" type="text" formControlName="reponame" />
+      <button class="btn-search" type="submit">Buscar</button>
+    </div>
+    <ul *ngIf="languages && languages.length > 0">
+      <li *ngFor="let lang of languages; let i = index">
+        <label>
+          <input
+            type="checkbox"
+            [checked]="selectedLangs.includes(lang)"
+            (change)="toggleLanguage(lang)"
+          />
+          {{ lang }}
+        </label>
+      </li>
+    </ul>
+    <div>
+      <label>Ordernar por estrellas:</label>
+      <select class="input" formControlName="sortBy" (change)="onChangeEmit()">
+        <option value="asc">Ascendente</option>
+        <option value="desc">Descendente</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Ordernar por nombre:</label>
+      <select class="input" formControlName="order" (change)="onChangeEmit()">
+        <option value="asc">A - Z</option>
+        <option value="desc">Z - A</option>
+      </select>
+    </div>
+  </form>
+</div>

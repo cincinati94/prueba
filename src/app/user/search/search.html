@@ -1,0 +1,14 @@
+<div class="wrapper">
+<form class="container-searchbar" [formGroup]="searchForm" (ngSubmit)="onSubmitForm()">
+  <input class="input" type="text" formControlName="username" required />
+  <button class="btn-primary" type="submit">Buscar</button>
+</form>
+<div class="header-info" *ngFor="let user of user">
+  <img class="img-user" src="{{ user.avatar_url }}" height="80px" width="80px" />
+  <div>
+    <p>{{ user.name }}</p>
+    <p>{{ user.bio }}</p>
+  </div>
+</div>
+<app-list [user]="inputName"></app-list>
+</div>
